@@ -202,6 +202,17 @@
 		return $url_path;
 	}
 
+    function print_hidden_form_vars($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $DB_TYPE, $DB_PORT, $SELF_URL_PATH) {
+        ?>
+        <input type="hidden" name="DB_USER" value="<?php echo $DB_USER ?>"/>
+        <input type="hidden" name="DB_PASS" value="<?php echo $DB_PASS ?>"/>
+        <input type="hidden" name="DB_NAME" value="<?php echo $DB_NAME ?>"/>
+        <input type="hidden" name="DB_HOST" value="<?php echo $DB_HOST ?>"/>
+        <input type="hidden" name="DB_PORT" value="<?php echo $DB_PORT ?>"/>
+        <input type="hidden" name="DB_TYPE" value="<?php echo $DB_TYPE ?>"/>
+        <input type="hidden" name="SELF_URL_PATH" value="<?php echo $SELF_URL_PATH ?>"/>
+        <?php
+    }
 ?>
 
 <div class="floatingLogo"><img src="../images/logo_small.png"></div>
@@ -367,14 +378,7 @@
 			<table><tr><td>
 			<form method="post">
 				<input type="hidden" name="op" value="installschema">
-
-				<input type="hidden" name="DB_USER" value="<?php echo $DB_USER ?>"/>
-				<input type="hidden" name="DB_PASS" value="<?php echo $DB_PASS ?>"/>
-				<input type="hidden" name="DB_NAME" value="<?php echo $DB_NAME ?>"/>
-				<input type="hidden" name="DB_HOST" value="<?php echo $DB_HOST ?>"/>
-				<input type="hidden" name="DB_PORT" value="<?php echo $DB_PORT ?>"/>
-				<input type="hidden" name="DB_TYPE" value="<?php echo $DB_TYPE ?>"/>
-				<input type="hidden" name="SELF_URL_PATH" value="<?php echo $SELF_URL_PATH ?>"/>
+                <?php print_hidden_form_vars($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $DB_TYPE, $DB_PORT, $SELF_URL_PATH); ?>
 
 				<?php if ($need_confirm) { ?>
 					<p><input onclick="return confirm('Please read the warning above. Continue?')" type="submit" value="Initialize database" style="color : red"></p>
@@ -385,13 +389,7 @@
 
 			</td><td>
 			<form method="post">
-				<input type="hidden" name="DB_USER" value="<?php echo $DB_USER ?>"/>
-				<input type="hidden" name="DB_PASS" value="<?php echo $DB_PASS ?>"/>
-				<input type="hidden" name="DB_NAME" value="<?php echo $DB_NAME ?>"/>
-				<input type="hidden" name="DB_HOST" value="<?php echo $DB_HOST ?>"/>
-				<input type="hidden" name="DB_PORT" value="<?php echo $DB_PORT ?>"/>
-				<input type="hidden" name="DB_TYPE" value="<?php echo $DB_TYPE ?>"/>
-				<input type="hidden" name="SELF_URL_PATH" value="<?php echo $SELF_URL_PATH ?>"/>
+                <?php print_hidden_form_vars($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $DB_TYPE, $DB_PORT, $SELF_URL_PATH); ?>
 
 				<input type="hidden" name="op" value="skipschema">
 				<p><input type="submit" value="Skip initialization"></p>
@@ -427,22 +425,16 @@
 			} else {
 				print_notice("Database initialization skipped.");
 			}
+            ?>
+			<h2>Generated configuration file</h2>
 
-			print "<h2>Generated configuration file</h2>";
+			<p>Copy following text and save as <code>config.php</code> in tt-rss main directory. It is suggested to read through the file to the end in case you need any options changed fom default values.</p>
 
-			print "<p>Copy following text and save as <code>config.php</code> in tt-rss main directory. It is suggested to read through the file to the end in case you need any options changed fom default values.</p>";
-
-			print "<p>After copying the file, you will be able to login with default username and password combination: <code>admin</code> and <code>password</code>. Don't forget to change the password immediately!</p>"; ?>
+		    <p>After copying the file, you will be able to login with default username and password combination: <code>admin</code> and <code>password</code>. Don't forget to change the password immediately!</p>
 
 			<form action="" method="post">
 				<input type="hidden" name="op" value="saveconfig">
-				<input type="hidden" name="DB_USER" value="<?php echo $DB_USER ?>"/>
-				<input type="hidden" name="DB_PASS" value="<?php echo $DB_PASS ?>"/>
-				<input type="hidden" name="DB_NAME" value="<?php echo $DB_NAME ?>"/>
-				<input type="hidden" name="DB_HOST" value="<?php echo $DB_HOST ?>"/>
-				<input type="hidden" name="DB_PORT" value="<?php echo $DB_PORT ?>"/>
-				<input type="hidden" name="DB_TYPE" value="<?php echo $DB_TYPE ?>"/>
-				<input type="hidden" name="SELF_URL_PATH" value="<?php echo $SELF_URL_PATH ?>"/>
+                <?php print_hidden_form_vars($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $DB_TYPE, $DB_PORT, $SELF_URL_PATH); ?>
 			<?php print "<textarea cols=\"80\" rows=\"20\">";
 			echo make_config($DB_TYPE, $DB_HOST, $DB_USER, $DB_NAME, $DB_PASS,
 				$DB_PORT, $SELF_URL_PATH);

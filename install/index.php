@@ -15,7 +15,7 @@
 		$password = "";
 		$possible = "0123456789abcdfghjkmnpqrstvwxyzABCDFGHJKMNPQRSTVWXYZ*%+^";
 
-   	$i = 0;
+       	$i = 0;
 
 		while ($i < $length) {
 			$char = substr($possible, mt_rand(0, strlen($possible)-1), 1);
@@ -27,7 +27,6 @@
 		}
 		return $password;
 	}
-
 
 	function sanity_check($db_type) {
 		$errors = array();
@@ -91,7 +90,6 @@
 
 	function db_connect($host, $user, $pass, $db, $type, $port = false) {
 		if ($type == "pgsql") {
-
 			$string = "dbname=$db user=$user";
 
 			if ($pass) {

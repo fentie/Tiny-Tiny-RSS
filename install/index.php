@@ -313,12 +313,11 @@
 		$errors = sanity_check($DB_TYPE);
 
 		if (count($errors) > 0) {
-			print "<p>Some configuration tests failed. Please correct them before continuing.</p>";
+			?><p>Some configuration tests failed. Please correct them before continuing.</p>
+			<ul>
 
-			print "<ul>";
-
-			foreach ($errors as $error) {
-				print "<li style='color : red'>$error</li>";
+			<?php foreach ($errors as $error) {
+				print "<li style=\"color : red\">$error</li>";
 			}
 
 			print "</ul>";

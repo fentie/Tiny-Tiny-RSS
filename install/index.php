@@ -79,7 +79,7 @@
 	}
 
 	function print_error($msg) {
-		print "<div class='error'><span><img src='../images/sign_excl.svg'></span>
+		print "<div class=\"error\"><span><img src=\"../images/sign_excl.svg\"></span>
 			<span>$msg</span></div>";
 	}
 
@@ -242,42 +242,42 @@
 <h2>Database settings</h2>
 
 <?php
-	$issel_pgsql = $DB_TYPE == "pgsql" ? "selected" : "";
-	$issel_mysql = $DB_TYPE == "mysql" ? "selected" : "";
+	$issel_pgsql = $DB_TYPE == "pgsql" ? 'selected="selected"' : "";
+	$issel_mysql = $DB_TYPE == "mysql" ? 'selected="selected"' : "";
 ?>
 
 <fieldset>
-	<label>Database type</label>
-	<select name="DB_TYPE">
+	<label for="DB_TYPE">Database type</label>
+	<select id="DB_TYPE">
 		<option <?php echo $issel_pgsql ?> value="pgsql">PostgreSQL</option>
 		<option <?php echo $issel_mysql ?> value="mysql">MySQL</option>
 	</select>
 </fieldset>
 
 <fieldset>
-	<label>Username</label>
-	<input required name="DB_USER" size="20" value="<?php echo $DB_USER ?>"/>
+	<label for="DB_USER">Username</label>
+	<input required id="DB_USER" size="20" value="<?php echo $DB_USER ?>"/>
 </fieldset>
 
 <fieldset>
-	<label>Password</label>
-	<input required name="DB_PASS" size="20" type="password" value="<?php echo $DB_PASS ?>"/>
+	<label for="DB_PASS">Password</label>
+	<input required id="DB_PASS" size="20" type="password" value="<?php echo $DB_PASS ?>"/>
 </fieldset>
 
 <fieldset>
-	<label>Database name</label>
-	<input required name="DB_NAME" size="20" value="<?php echo $DB_NAME ?>"/>
+	<label for="DB_NAME">Database name</label>
+	<input required id="DB_NAME" size="20" value="<?php echo $DB_NAME ?>"/>
 </fieldset>
 
 <fieldset>
-	<label>Host name</label>
-	<input name="DB_HOST" size="20" value="<?php echo $DB_HOST ?>"/>
+	<label for="DB_HOST">Host name</label>
+	<input id="DB_HOST" size="20" value="<?php echo $DB_HOST ?>"/>
 	<span class="hint">If needed</span>
 </fieldset>
 
 <fieldset>
-	<label>Port</label>
-	<input name="DB_PORT" type="number" size="20" value="<?php echo $DB_PORT ?>"/>
+	<label for="DB_PORT">Port</label>
+	<input id="DB_PORT" type="number" size="20" value="<?php echo $DB_PORT ?>"/>
 	<span class="hint">Usually 3306 for MySQL or 5432 for PostgreSQL</span>
 </fieldset>
 
@@ -286,10 +286,9 @@
 <p>This should be set to the location your Tiny Tiny RSS will be available on.</p>
 
 <fieldset>
-	<label>Tiny Tiny RSS URL</label>
-	<input type="url" name="SELF_URL_PATH" placeholder="<?php echo $SELF_URL_PATH; ?>" size="60" value="<?php echo $SELF_URL_PATH ?>"/>
+	<label for="SELF_URL_PATH">Tiny Tiny RSS URL</label>
+	<input type="url" id="SELF_URL_PATH" placeholder="<?php echo $SELF_URL_PATH; ?>" size="60" value="<?php echo $SELF_URL_PATH ?>"/>
 </fieldset>
-
 
 <p><input type="submit" value="Test configuration"></p>
 
